@@ -14,9 +14,13 @@ public class FullStory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_story);
+        setTitle("MadLibs");
 
+        // Get Story object from intent
         Intent intent = getIntent();
         Story story = (Story) intent.getSerializableExtra("Story");
+
+        // Set textView to correct text, use html tags to make filled in words bold.
         TextView fullText = findViewById(R.id.storyTxt);
         String fullStory = story.toString();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -26,13 +30,15 @@ public class FullStory extends AppCompatActivity {
         }
     }
 
+    // return to main activity/ make a new story
     public void onButtonClickNewStory(View view) {
         Intent intent = new Intent(FullStory.this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
-    public void onBackPressed(){
+    // Override the back button so you can't change any words after you've seen the whole story
+    public void onBackPressed() {
         Intent intent = new Intent(FullStory.this, MainActivity.class);
         startActivity(intent);
     }

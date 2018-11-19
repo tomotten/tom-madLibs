@@ -13,16 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("MadLibs");
     }
 
 
         public void onButtonClick(View view) {
-
-            InputStream is = getResources().openRawResource(R.raw.madlib0_simple);
-            Story story = new Story(is);
-
             Intent intent = new Intent(MainActivity.this, ChooseStory.class);
-//            intent.putExtra("Story", story);
             startActivity(intent);
         }
 }

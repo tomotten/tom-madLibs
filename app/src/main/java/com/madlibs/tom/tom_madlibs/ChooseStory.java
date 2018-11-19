@@ -17,13 +17,14 @@ public class ChooseStory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_story);
+        setTitle("MadLibs");
     }
 
     public void onButtonClickStorySelected(View view) {
         Button b = (Button) view;
         String txt = b.getText().toString();
         InputStream is;
-
+        // if user chose random, pick a random story from list
         if (txt.equals("Random")) {
             List<String> list = new ArrayList<String>();
             list.add("Simple");
@@ -33,8 +34,9 @@ public class ChooseStory extends AppCompatActivity {
             list.add("Dance");
             txt = list.get(new Random().nextInt(list.size()));
         }
+        // get the text corresponding with the users choise.
         switch (txt) {
-            case "Simple":
+            case "Simple story":
                 is = getResources().openRawResource(R.raw.madlib0_simple);
                 break;
             case "Tarzan":
