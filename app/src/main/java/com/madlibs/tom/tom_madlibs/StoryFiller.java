@@ -31,7 +31,7 @@ public class StoryFiller extends AppCompatActivity {
         else {
             Intent intent2 = new Intent(StoryFiller.this, FullStory.class);
             intent2.putExtra("Story", story);
-            startActivity(intent);
+            startActivity(intent2);
         }
 
     }
