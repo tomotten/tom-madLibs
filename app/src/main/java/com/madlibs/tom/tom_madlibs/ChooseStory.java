@@ -34,7 +34,8 @@ public class ChooseStory extends AppCompatActivity {
             list.add("Dance");
             txt = list.get(new Random().nextInt(list.size()));
         }
-        // get the text corresponding with the users choise.
+
+        // get the text corresponding with the users choise
         switch (txt) {
             case "Simple story":
                 is = getResources().openRawResource(R.raw.madlib0_simple);
@@ -55,6 +56,7 @@ public class ChooseStory extends AppCompatActivity {
                 is = getResources().openRawResource(R.raw.madlib0_simple);
                 break;
         }
+
         Story story = new Story(is);
         Intent intent = new Intent(ChooseStory.this, StoryFiller.class);
         intent.putExtra("Story", story);

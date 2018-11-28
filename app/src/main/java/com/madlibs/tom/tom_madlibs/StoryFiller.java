@@ -1,11 +1,13 @@
 package com.madlibs.tom.tom_madlibs;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StoryFiller extends AppCompatActivity {
     Story story;
@@ -44,10 +46,17 @@ public class StoryFiller extends AppCompatActivity {
     public void onButtonClickNext(View view) {
         EditText input = findViewById(R.id.inputWord);
         String word = input.getText().toString();
-        story.fillInPlaceholder(word);
-        Intent intent = new Intent(StoryFiller.this, StoryFiller.class);
-        intent.putExtra("Story", story);
-        startActivity(intent);
+        if (word.length() < 2) { // check if word is not empty or a single letter
+            Toast.makeText(this, "Please don't leave word empty!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(StoryFiller.this, StoryFiller.class);
+            intent.putExtra("Story", story);
+            startActivity(intent);
+        }
+        else {
+            story.fillInPlaceholder(word);
+            Intent intent = new Intent(StoryFiller.this, StoryFiller.class);
+            intent.putExtra("Story", story);
+            startActivity(intent);
+        }
     }
-
 }

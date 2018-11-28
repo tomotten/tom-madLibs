@@ -16,11 +16,11 @@ public class FullStory extends AppCompatActivity {
         setContentView(R.layout.activity_full_story);
         setTitle("MadLibs");
 
-        // Get Story object from intent
+        // get Story object from intent
         Intent intent = getIntent();
         Story story = (Story) intent.getSerializableExtra("Story");
 
-        // Set textView to correct text, use html tags to make filled in words bold.
+        // set textView to correct text, use html tags to make filled in words bold.
         TextView fullText = findViewById(R.id.storyTxt);
         String fullStory = story.toString();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
